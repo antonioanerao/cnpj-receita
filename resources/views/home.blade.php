@@ -14,7 +14,7 @@
                         </div>
                     @endif
 
-                    You are logged in!
+                    Faça uma <a href="{{ route('buscar-empresa') }}">busca</a> por empresas
                 </div>
             </div>
         </div>
