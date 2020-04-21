@@ -191,5 +191,54 @@
                 </div>
             </div>
         </div>
+        <br>
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-md-8">
+                    <div class="card">
+                        <div class="card-header">Telefones</div>
+                        <div class="card-body">
+                            <div class="modal-body">
+                                <div class="row">
+                                    @foreach($empresa as $dados)
+                                        @if(!empty($dados['ddd_1']))
+                                            <div class="col-md-6">
+                                                <div class="form-group">
+                                                    <b>{{ Form::label('ddd_1', 'DDD') }}</b>
+                                                    {!! Form::text('ddd_1', $dados['ddd_1'], ['class'=>'form-control', 'disabled']) !!}
+                                                </div>
+                                            </div>
+
+                                            <div class="col-md-6">
+                                                <div class="form-group">
+                                                    <b>{{ Form::label('telefone_1', 'Telefone') }}</b>
+                                                    {!! Form::text('telefone_1', $dados['telefone_1'], ['class'=>'form-control', 'disabled']) !!}
+                                                </div>
+                                            </div>
+                                        @endif
+
+                                        @if(!empty($dados['ddd_2']))
+                                            <div class="col-md-6">
+                                                <div class="form-group">
+                                                    <b>{{ Form::label('ddd_2', 'DDD') }}</b>
+                                                    {!! Form::text('ddd_2', $dados['ddd_2'], ['class'=>'form-control', 'disabled']) !!}
+                                                </div>
+                                            </div>
+
+                                            <div class="col-md-6">
+                                                <div class="form-group">
+                                                    <b>{{ Form::label('telefone_2', 'Telefone') }}</b>
+                                                    {!! Form::text('telefone_2', $dados['telefone_2'], ['class'=>'form-control', 'disabled']) !!}
+                                                </div>
+                                            </div>
+                                        @endif
+                                    @endforeach
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
     @endif
 @endsection
