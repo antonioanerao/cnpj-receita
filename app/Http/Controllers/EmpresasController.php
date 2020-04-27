@@ -18,10 +18,21 @@ class EmpresasController extends Controller
         $this->empresa = $empresa;
     }
 
-    public function index($cnpj)
+    public function index($cnpj, $tipo)
     {
         $empresas = Empresa::where('cnpj', '=', $cnpj)->get();
-        return response()->json($empresas, 200);
+        if($tipo == 'empresa')
+        {
+            return response()->json($empresas, 200);
+        }
+        if($tipo == 'socios')
+        {
+            return response()->json($empresas[0]->socios(), 200);
+        }
+        else
+        {
+            return response()->json('O tipo informado é inválido', 200);
+        }
     }
 
     public function store(Request $request)
