@@ -35,7 +35,7 @@
         </div>
     </div>
 <br>
-    @if(!empty($empresa))
+    @if(isset($empresa))
         <div class="container">
             <div class="row justify-content-center">
                 <div class="col-md-8">
@@ -196,7 +196,7 @@
             <div class="row justify-content-center">
                 <div class="col-md-8">
                     <div class="card">
-                        <div class="card-header">Telefones</div>
+                        <div class="card-header">Contatos</div>
                         <div class="card-body">
                             <div class="modal-body">
                                 <div class="row">
@@ -232,6 +232,48 @@
                                                 </div>
                                             </div>
                                         @endif
+
+                                        @if(!empty($dados['email']))
+                                            <div class="col-md-12">
+                                                <div class="form-group">
+                                                    <b>{{ Form::label('email', 'Email') }}</b>
+                                                    {!! Form::text('email', $dados['email'], ['class'=>'form-control', 'disabled']) !!}
+                                                </div>
+                                            </div>
+                                            @endif
+                                    @endforeach
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <br>
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-md-8">
+                    <div class="card">
+                        <div class="card-header">Informações Adicionais</div>
+                        <div class="card-body">
+                            <div class="modal-body">
+                                <div class="row">
+                                    @foreach($empresa as $dados)
+                                        @if(!empty($dados['capital_social']))
+                                            <div class="col-md-6">
+                                                <div class="form-group">
+                                                    <b>{{ Form::label('capital_social', 'Capital Social') }}</b>
+                                                    {!! Form::text('capital_social', 'R$ '. number_format($dados['capital_social'], 1, '.', ',' ), ['class'=>'form-control', 'disabled']) !!}
+                                                </div>
+                                            </div>
+                                        @endif
+
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <b>{{ Form::label('opc_simples', 'Simples') }}</b>
+                                                {!! Form::text('opc_simples', $dados['opc_simples'], ['class'=>'form-control', 'disabled']) !!}
+                                            </div>
+                                        </div>
                                     @endforeach
                                 </div>
                             </div>
